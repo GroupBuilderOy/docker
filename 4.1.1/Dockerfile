@@ -4,6 +4,11 @@ FROM glassfish/openjdk
 # Maintainer
 MAINTAINER Bruno Borges <bruno.borges@oracle.com>
 
+# Set Locale and Language
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8
+
 # Set environment variables and default password for user 'admin'
 ENV GLASSFISH_PKG=glassfish-4.1.1.zip \
     GLASSFISH_URL=http://download.oracle.com/glassfish/4.1.1/release/glassfish-4.1.1.zip \
