@@ -19,7 +19,7 @@ ENV GLASSFISH_PKG=glassfish-4.1.1.zip \
 # Install packages, download and extract GlassFish
 # Setup password file
 # Enable DAS
-RUN apk add --update wget unzip && \
+RUN apk add --update wget bash unzip && \
     wget --no-check-certificate $GLASSFISH_URL && \
     unzip -o $GLASSFISH_PKG && \
     rm -f $GLASSFISH_PKG && \
@@ -32,6 +32,10 @@ RUN apk add --update wget unzip && \
     asadmin start-domain && \
     echo "AS_ADMIN_PASSWORD=${PASSWORD}" > /tmp/glassfishpwd && \
     asadmin --user=admin --passwordfile=/tmp/glassfishpwd enable-secure-admin && \
+    asadmin --user=admin --passwordfile=/tmp/glassfishpwd delete-jvm-options -client && \
+    asadmin --user=admin --passwordfile=/tmp/glassfishpwd enable-secure-admin && \
+    asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jvm-options "-Dfile.encoding=UTF-8" && \
+    asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jvm-options "-server" && \
     asadmin --user=admin stop-domain && \
     rm /tmp/glassfishpwd
 
