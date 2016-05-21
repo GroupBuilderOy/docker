@@ -33,7 +33,6 @@ RUN apk add --update wget bash unzip && \
     echo "AS_ADMIN_PASSWORD=${PASSWORD}" > /tmp/glassfishpwd && \
     asadmin --user=admin --passwordfile=/tmp/glassfishpwd enable-secure-admin && \
     asadmin --user=admin --passwordfile=/tmp/glassfishpwd delete-jvm-options -client && \
-    asadmin --user=admin --passwordfile=/tmp/glassfishpwd enable-secure-admin && \
     asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jvm-options "-Dfile.encoding=UTF-8" && \
     asadmin --user=admin --passwordfile=/tmp/glassfishpwd create-jvm-options "-server" && \
     asadmin --user=admin stop-domain && \
