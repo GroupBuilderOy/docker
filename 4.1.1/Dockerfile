@@ -1,5 +1,6 @@
 # GlassFish on Docker
-FROM glassfish/openjdk 
+#FROM glassfish/openjdk 
+FROM anapsix/alpine-java
 
 # Maintainer
 MAINTAINER Bruno Borges <bruno.borges@oracle.com>
